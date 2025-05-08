@@ -28,7 +28,7 @@ export default async function StorageTable({
                       Артикул
                     </th>
                     <th scope="col" className="px-3 py-5 font-medium">
-                      Пставщик
+                      Поставщик
                     </th>
                     <th scope="col" className="px-3 py-5 font-medium">
                       Кол-во

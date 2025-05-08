@@ -1,5 +1,6 @@
 import { InvoicesTable } from "@/app/lib/definitions";
 import { InvoiceInfo } from "./buttons";
+import StatusButton from "./status-button";
 
 export default async function StorageTable({
   invoices,
@@ -57,18 +58,15 @@ export default async function StorageTable({
                       </td>
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm group-first-of-type:rounded-md group-last-of-type:rounded-md">
                         {i.delivery_date
-                          ? new Date().toLocaleDateString()
+                          ? new Date(i.delivery_date).toLocaleDateString()
                           : "-"}
                       </td>
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm">
-                        {i.status === null
-                          ? "Отменено"
-                          : i.status
-                          ? "Доставлено"
-                          : "На согласовании"}
-                      </td>
-                      <td className="whitespace-nowrap bg-white px-4 py-5 text-sm">
-                        {i.payment_status ? "Оплачено" : "Не оплачено"}
+                        <StatusButton
+                          id={i.id}
+                          currentStatus={i.status}
+                          currentPaymentStatus={i.payment_status}
+                        />
                       </td>
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm">
                         <InvoiceInfo id={i.id} />
