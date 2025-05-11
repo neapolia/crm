@@ -1,15 +1,10 @@
 'use client';
 
-import { Metadata } from "next";
 import { fetchDashboardStats, fetchMonthlyStats, fetchProviderStats, fetchInvoices } from "@/app/lib/data";
 import StatsCards from "@/app/ui/dashboard/stats";
 import MonthlyChart from "@/app/ui/dashboard/monthly";
 import ProviderStatsTable from "@/app/ui/dashboard/provider-stats";
 import RecentInvoices from "@/app/ui/dashboard/recent-invoices";
-
-export const metadata: Metadata = {
-  title: "Статистика",
-};
 
 export default async function DashboardPage() {
   const [stats, monthlyStats, providerStats, recentInvoices] = await Promise.all([
